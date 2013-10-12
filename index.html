@@ -27,7 +27,68 @@
 <!-- MAIN CONTENT -->
 <div id="main_content_wrap" class="outer">
 <section id="main_content" class="inner">
-<h3>Welcome to Arthur's GitHub Pages.</h3>
+<!-- <h3>Welcome to Arthur's GitHub Pages.</h3> -->
+
+<h3>[algorithm] Construct balanced BST from sorted integer array</h3>
+Assume the array is sorted in ascending order. 
+<code>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Node {
+	int value;
+	Node* left;
+	Node* right;
+};
+
+void buildTree(const int* data, int start, int end, Node*& root) {
+	// base cases
+	if (start > end)
+	{
+		root = NULL;
+		return;
+	}
+	if (start == end)
+	{
+		root = new Node();
+		root->value = data[start];
+		root->left = NULL;
+		root->right = NULL;
+		return;
+	}
+
+	// recursion cases
+	int mid = (start+end)/2;
+	root = new Node();
+	root->value = data[mid];
+	buildTree(data, start, mid-1, root->left);
+	buildTree(data, mid+1, end, root->right);
+}
+
+// for visualizing BST
+void printBST(Node* root, string prefix)
+{
+	cout << prefix << root->value << endl;
+	if (root->left)
+		printBST(root->left, prefix+"-");
+	if (root->right)
+		printBST(root->right, prefix+"-");
+}
+
+// testing
+int main()
+{
+	int input[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	Node* root = NULL;
+	buildTree(input, 0, sizeof(input)/sizeof(int)-1, root);
+	printBST(root, "-");
+
+	return 0;
+}
+</code>
+
 
 <h3>Install OpenCV on Mac OSX</h3>
 
