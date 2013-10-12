@@ -8,6 +8,10 @@
 
 <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
+<!-- SyntaxHighlighter -->
+<link href="css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
 <title>Arthur's GitHub:page</title>
 </head>
 
@@ -31,7 +35,7 @@
 
 <h3>[algorithm] Construct balanced BST from sorted integer array</h3>
 Assume the array is sorted in ascending order. 
-<pre><code>
+<pre class='brush: cpp'>
 #include <iostream>
 #include <string>
 
@@ -68,8 +72,7 @@ void buildTree(const int* data, int start, int end, Node*& root) {
 }
 
 // for visualizing BST
-void printBST(Node* root, string prefix)
-{
+void printBST(Node* root, string prefix) {
 	cout << prefix << root->value << endl;
 	if (root->left)
 		printBST(root->left, prefix+"-");
@@ -78,8 +81,7 @@ void printBST(Node* root, string prefix)
 }
 
 // testing
-int main()
-{
+int main() {
 	int input[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	Node* root = NULL;
 	buildTree(input, 0, sizeof(input)/sizeof(int)-1, root);
@@ -87,7 +89,7 @@ int main()
 
 	return 0;
 }
-</code></pre>
+</pre>
 
 
 <h3>Install OpenCV on Mac OSX</h3>
@@ -112,7 +114,11 @@ And repeat for Debug build with -D CMAKE_DEBUG_POSTFIX=d
 </footer>
 </div>
 
-
+<script src="js/shCore.js"></script>
+<script src="js/shBrushCpp.js"></script>
+<script>
+  SyntaxHighlighter.all()
+</script>
 
 </body>
 </html>
